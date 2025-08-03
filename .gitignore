@@ -118,6 +118,10 @@ common/autoinstallers/*/.npmrc
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
+# Generated files (auto-generated from SVGs, should not be committed)
+src/icons/*.tsx
+src/index.ts
+
 # Package manager lock files (keep package-lock.json but ignore others if needed)
 # Uncomment the following line if you want to ignore package-lock.json
 # package-lock.json
