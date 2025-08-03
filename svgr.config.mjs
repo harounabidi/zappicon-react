@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   icon: true,
   jsxRuntime: "classic",
   expandProps: "end",

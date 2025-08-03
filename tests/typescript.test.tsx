@@ -5,7 +5,7 @@ import AddressCardDuotone from "../src/icons/AddressCardDuotone"
 describe("TypeScript Types", () => {
   it("icon components accept SVGProps", () => {
     // This test passes if TypeScript compilation succeeds
-    const props: SVGProps<SVGSVGElement> & { [key: string]: any } = {
+    const props: SVGProps<SVGSVGElement> & { [key: string]: unknown } = {
       width: 24,
       height: 24,
       fill: "currentColor",

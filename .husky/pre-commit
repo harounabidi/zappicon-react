@@ -1,5 +1,5 @@
-npm run lint:fix
+#!/bin/sh
 
-npm test
-
+npm run lint
 npm run build
+npm test
