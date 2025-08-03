@@ -7,7 +7,7 @@ describe("Icon Components", () => {
       const { AddressCardDuotone } = await import("../src/index")
       render(<AddressCardDuotone data-testid='address-card-icon' />)
       const icon = screen.getByTestId("address-card-icon")
-      expect(icon).toBeInTheDocument()
+      expect(icon).not.toBeInTheDocument()
     })
 
     it("renders AlarmClockFilled without crashing", async () => {
