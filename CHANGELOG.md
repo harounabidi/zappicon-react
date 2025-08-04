@@ -1,5 +1,11 @@
 # @harounabidi/zappicon
 
+## 1.1.3
+
+### Patch Changes
+
+- ce9880f: fix E404 Not Found error
+
 ## 1.1.2
 
 ### Patch Changes
