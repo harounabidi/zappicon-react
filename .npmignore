@@ -1,0 +1,16 @@
+node_modules
+src
+.changeset
+.github
+.husky
+coverage
+icons
+scripts
+tests
+.gitignore
+.npmignore
+commitlint.config.mjs
+eslint.config.mts
+jest.config.mjs
+package-lock.json
+tsconfig.json
