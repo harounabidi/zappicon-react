@@ -23,4 +23,5 @@ export default {
     "subject-full-stop": [2, "never", "."],
     "type-empty": [2, "never"],
   },
+  ignores: [(commit) => commit.startsWith("chore(release):")],
 }
