@@ -4,13 +4,10 @@ export default {
   expandProps: "end",
   typescript: true,
   prettier: true,
-  // svgProps: {
-  //   role: 'img'
-  // },
   replaceAttrValues: {
     "#000": "currentColor",
   },
-  // ref: true,
+  ref: true,
   titleProp: false,
   descProp: false,
   native: false,

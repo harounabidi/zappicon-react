@@ -31,9 +31,58 @@ describe("TypeScript Types", () => {
     expect(element).toBeDefined()
   })
 
-  it("icon components accept ref", () => {
-    const ref = React.createRef<SVGSVGElement>()
-    const element = <AddressCardDuotone ref={ref} />
-    expect(element).toBeDefined()
+  describe("Ref Types", () => {
+    it("icon components accept ref with correct type", () => {
+      const ref = React.createRef<SVGSVGElement>()
+      const element = <AddressCardDuotone ref={ref} />
+      expect(element).toBeDefined()
+    })
+
+    it("icon components work with useRef", () => {
+      const TestComponent = () => {
+        const ref = React.useRef<SVGSVGElement>(null)
+        return <AddressCardDuotone ref={ref} />
+      }
+
+      const element = <TestComponent />
+      expect(element).toBeDefined()
+    })
+
+    it("icon components work with callback refs", () => {
+      const callbackRef = (element: SVGSVGElement | null) => {
+        // This should compile without type errors
+        if (element) {
+          element.getBBox()
+        }
+      }
+
+      const element = <AddressCardDuotone ref={callbackRef} />
+      expect(element).toBeDefined()
+    })
+
+    it("ref type is compatible with SVGSVGElement", () => {
+      // This test ensures the ref type is correctly inferred
+      const ref = React.createRef<SVGSVGElement>()
+      const element = <AddressCardDuotone ref={ref} />
+
+      // TypeScript should understand that ref.current is SVGSVGElement | null
+      const current: SVGSVGElement | null = ref.current
+      expect(typeof current).toBe("object")
+      expect(element).toBeDefined()
+    })
+
+    it("works with forwardRef pattern correctly", () => {
+      // Test that the component is properly typed as a forwardRef component
+      const WrappedComponent = React.forwardRef<
+        SVGSVGElement,
+        React.ComponentProps<typeof AddressCardDuotone>
+      >((props, ref) => <AddressCardDuotone {...props} ref={ref} />)
+
+      WrappedComponent.displayName = "WrappedAddressCardDuotone"
+
+      const ref = React.createRef<SVGSVGElement>()
+      const element = <WrappedComponent ref={ref} width={32} />
+      expect(element).toBeDefined()
+    })
   })
 })

@@ -129,6 +129,70 @@ describe("Icon Components", () => {
     })
   })
 
+  describe("Ref Handling", () => {
+    it("forwards ref to the SVG element", async () => {
+      const { AddressCardDuotone } = await import("../src/index")
+      const ref = React.createRef<SVGSVGElement>()
+      render(<AddressCardDuotone data-testid='ref-icon' ref={ref} />)
+
+      const icon = screen.getByTestId("ref-icon")
+      expect(ref.current).toBe(icon)
+      expect(ref.current?.tagName).toBe("svg")
+    })
+
+    it("allows access to SVG methods through ref", async () => {
+      const { AddressCardDuotone } = await import("../src/index")
+      const ref = React.createRef<SVGSVGElement>()
+      render(<AddressCardDuotone data-testid='ref-icon' ref={ref} />)
+
+      expect(ref.current).toBeInstanceOf(SVGSVGElement)
+      // In JSDOM environment, SVG methods might not be fully implemented
+      // So we test that the ref points to the correct SVG element
+      expect(ref.current?.tagName.toLowerCase()).toBe("svg")
+      expect(ref.current?.namespaceURI).toBe("http://www.w3.org/2000/svg")
+    })
+
+    it("works with useRef hook", async () => {
+      const { AddressCardDuotone } = await import("../src/index")
+
+      const TestComponent = () => {
+        const ref = React.useRef<SVGSVGElement>(null)
+
+        React.useEffect(() => {
+          if (ref.current) {
+            ref.current.setAttribute("data-ref-test", "true")
+          }
+        }, [])
+
+        return <AddressCardDuotone data-testid='use-ref-icon' ref={ref} />
+      }
+
+      render(<TestComponent />)
+      const icon = screen.getByTestId("use-ref-icon")
+      expect(icon).toHaveAttribute("data-ref-test", "true")
+    })
+
+    it("works with callback refs", async () => {
+      const { AddressCardDuotone } = await import("../src/index")
+      let refElement: SVGSVGElement | null = null
+
+      const callbackRef = (element: SVGSVGElement | null) => {
+        refElement = element
+        if (element) {
+          element.setAttribute("data-callback-ref", "true")
+        }
+      }
+
+      render(
+        <AddressCardDuotone data-testid='callback-ref-icon' ref={callbackRef} />
+      )
+
+      const icon = screen.getByTestId("callback-ref-icon")
+      expect(refElement).toBe(icon)
+      expect(icon).toHaveAttribute("data-callback-ref", "true")
+    })
+  })
+
   describe("Accessibility", () => {
     it("supports aria-label for screen readers", async () => {
       const { AddressCardDuotone } = await import("../src/index")

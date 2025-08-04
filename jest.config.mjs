@@ -1,15 +1,16 @@
 export default {
   preset: "ts-jest",
   testEnvironment: "jsdom",
-  setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
+  setupFilesAfterEnv: ["@testing-library/jest-dom"],
   testMatch: [
-    "<rootDir>/tests/**/*.(ts|tsx)",
+    "<rootDir>/tests/**/*.test.(ts|tsx)",
+    "<rootDir>/tests/**/*.spec.(ts|tsx)",
     "<rootDir>/src/**/*.(test|spec).(ts|tsx)",
   ],
   collectCoverageFrom: [
     "src/**/*.(ts|tsx)",
     "!src/**/*.d.ts",
-    "!src/setupTests.ts",
+    "!tests/setup.ts",
     "!src/index.ts",
     "!tests/**",
   ],

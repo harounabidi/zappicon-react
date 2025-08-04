@@ -9,25 +9,28 @@ describe("Package Exports", () => {
 
   it("exports AddressCardDuotone component", () => {
     expect(IconLibrary.AddressCardDuotone).toBeDefined()
-    expect(typeof IconLibrary.AddressCardDuotone).toBe("function")
+    expect(typeof IconLibrary.AddressCardDuotone).toBe("object")
+    expect(IconLibrary.AddressCardDuotone.$$typeof).toBeDefined() // forwardRef components have $$typeof
   })
 
   it("exports AlarmClockFilled component", () => {
     expect(IconLibrary.AlarmClockFilled).toBeDefined()
-    expect(typeof IconLibrary.AlarmClockFilled).toBe("function")
+    expect(typeof IconLibrary.AlarmClockFilled).toBe("object")
+    expect(IconLibrary.AlarmClockFilled.$$typeof).toBeDefined()
   })
 
   it("exports BellRegular component", () => {
     expect(IconLibrary.BellRegular).toBeDefined()
-    expect(typeof IconLibrary.BellRegular).toBe("function")
+    expect(typeof IconLibrary.BellRegular).toBe("object")
+    expect(IconLibrary.BellRegular.$$typeof).toBeDefined()
   })
 
-  it("all exports are React components (functions)", () => {
+  it("all exports are React components (forwardRef objects)", () => {
     const iconNames = Object.keys(IconLibrary)
     iconNames.forEach((iconName) => {
-      expect(typeof IconLibrary[iconName as keyof typeof IconLibrary]).toBe(
-        "function"
-      )
+      const component = IconLibrary[iconName as keyof typeof IconLibrary]
+      expect(typeof component).toBe("object")
+      expect(component.$$typeof).toBeDefined() // forwardRef components have $$typeof
     })
   })
 
