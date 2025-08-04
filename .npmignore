@@ -1,6 +1,5 @@
 node_modules
 src
-.changeset
 .github
 .husky
 coverage
@@ -9,6 +8,7 @@ scripts
 tests
 .gitignore
 .npmignore
+.releaserc.json
 commitlint.config.mjs
 eslint.config.mts
 jest.config.mjs

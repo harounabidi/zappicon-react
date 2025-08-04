@@ -24,11 +24,11 @@
   "description": "A comprehensive React icon library with multiple variants (filled, outline, duotone, light, regular)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/harounabidi/zicons.git"
+    "url": "git+https://github.com/harounabidi/zappicon-react.git"
   },
-  "homepage": "https://github.com/harounabidi/zicons#readme",
+  "homepage": "https://github.com/harounabidi/zappicon-react#readme",
   "bugs": {
-    "url": "https://github.com/harounabidi/zicons/issues"
+    "url": "https://github.com/harounabidi/zappicon-react/issues"
   },
   "scripts": {
     "prepare": "husky",
@@ -41,22 +41,21 @@
     "test:coverage": "jest --coverage",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "changeset": "changeset",
-    "version": "changeset version",
-    "release": "npm run build && changeset publish",
+    "semantic-release": "semantic-release",
     "prepublishOnly": "npm run build && npm test"
   },
   "peerDependencies": {
     "react": ">=16.8.0"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.29.5",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@eslint/js": "^9.32.0",
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.4",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "@svgr/cli": "^8.1.0",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.6.4",
@@ -75,6 +74,7 @@
     "rollup": "^4.46.2",
     "rollup-plugin-dts": "^6.2.1",
     "rollup-plugin-filesize": "^10.0.0",
+    "semantic-release": "^24.2.7",
     "ts-jest": "^29.1.1",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.38.1-alpha.4"
