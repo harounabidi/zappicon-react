@@ -1,0 +1,5 @@
+---
+"@harounabidi/zappicon": patch
+---
+
+version
