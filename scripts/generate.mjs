@@ -8,7 +8,21 @@ const __dirname = path.dirname(__filename)
 const iconsDir = path.join(__dirname, "../src/icons")
 const outputFile = path.join(__dirname, "../src/index.ts")
 
-// Get all React component files
+// Ensure directories exist
+const srcDir = path.join(__dirname, "../src")
+if (!fs.existsSync(srcDir)) {
+  fs.mkdirSync(srcDir, { recursive: true })
+}
+if (!fs.existsSync(iconsDir)) {
+  fs.mkdirSync(iconsDir, { recursive: true })
+  // Create .gitkeep to ensure directory is tracked by git
+  fs.writeFileSync(
+    path.join(iconsDir, ".gitkeep"),
+    "# This file ensures the src/icons directory is tracked by Git\n# The actual icon files are auto-generated and ignored in .gitignore\n"
+  )
+}
+
+// Get all React component files (skip .gitkeep)
 const componentFiles = fs
   .readdirSync(iconsDir)
   .filter((file) => file.endsWith(".tsx"))

@@ -28,20 +28,20 @@
     "url": "https://github.com/harounabidi/zicons/issues"
   },
   "scripts": {
+    "prepare": "husky",
+    "clean": "rm -rf dist && rm -rf src/icons",
     "generate": "node scripts/generate.mjs",
     "svgr": "svgr --out-dir src/icons icons/*.svg && npm run generate",
-    "clean": "rm -rf dist && rm -rf src/icons",
     "build": "npm run clean && npm run svgr && rollup -c",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "prepublishOnly": "npm run build && npm test",
-    "prepare": "husky",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "changeset": "changeset",
     "version": "changeset version",
-    "release": "npm run build && changeset publish"
+    "release": "npm run build && changeset publish",
+    "prepublishOnly": "npm run build && npm test"
   },
   "peerDependencies": {
     "react": ">=16.8.0"
