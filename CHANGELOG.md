@@ -1,5 +1,11 @@
 # @harounabidi/zappicon
 
+## 1.1.4
+
+### Patch Changes
+
+- b478396: test
+
 ## 1.1.3
 
 ### Patch Changes
