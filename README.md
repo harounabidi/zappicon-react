@@ -21,19 +21,39 @@ npm install @harounabidi/zappicon
 
 ### Tree-shakeable imports (Recommended)
 
-For optimal bundle size, import individual icons:
+For optimal bundle size, import individual icons. This will only include the specific icons you need:
 
 ```jsx
-import { SvgBellFilled } from "@harounabidi/zappicon"
-import { SvgSearchRegular } from "@harounabidi/zappicon"
-import { SvgHeartSimpleDuotone } from "@harounabidi/zappicon"
+import { BellFilled } from "@harounabidi/zappicon"
+import { SearchRegular } from "@harounabidi/zappicon"
+import { HeartSimpleDuotone } from "@harounabidi/zappicon"
 
 function MyComponent() {
   return (
     <div>
-      <SvgBellFilled />
-      <SvgSearchRegular />
-      <SvgHeartSimpleDuotone />
+      <BellFilled />
+      <SearchRegular />
+      <HeartSimpleDuotone />
+    </div>
+  )
+}
+```
+
+### Direct icon imports (Maximum tree-shaking)
+
+For even better tree-shaking in some bundlers, you can import icons directly:
+
+```jsx
+import BellFilled from "@harounabidi/zappicon/icons/BellFilled"
+import SearchRegular from "@harounabidi/zappicon/icons/SearchRegular"
+import HeartSimpleDuotone from "@harounabidi/zappicon/icons/HeartSimpleDuotone"
+
+function MyComponent() {
+  return (
+    <div>
+      <BellFilled />
+      <SearchRegular />
+      <HeartSimpleDuotone />
     </div>
   )
 }
@@ -41,51 +61,51 @@ function MyComponent() {
 
 ### Barrel imports
 
-You can also import from the main package:
+You can also import from the main package, though this may result in larger bundles with some bundlers:
 
 ```jsx
 import {
-  SvgBellFilled,
-  SvgSearchRegular,
-  SvgHeartSimpleDuotone,
+  BellFilled,
+  SearchRegular,
+  HeartSimpleDuotone,
 } from "@harounabidi/zappicon"
 
 function MyComponent() {
   return (
     <div>
-      <SvgBellFilled />
-      <SvgSearchRegular />
-      <SvgHeartSimpleDuotone />
+      <BellFilled />
+      <SearchRegular />
+      <HeartSimpleDuotone />
     </div>
   )
 }
-}
 ```
+
+## Bundle Size Comparison
+
+The library is optimized for tree-shaking:
+
+- **Individual icon**: ~891B (when importing single icons)
+- **Full library**: ~85KB (when importing from main index)
+
+Modern bundlers like Webpack, Rollup, and Vite will automatically tree-shake unused icons when using named imports.
 
 ## Icon Variants
 
 Each icon comes in 5 different variants:
 
-- **Regular**: Standard outline style
-- **Filled**: Solid fill style
-- **Light**: Thin outline style
-- **Duotone**: Two-tone style with opacity
-- **DuotoneLine**: Duotone with line details
+- **Regular**: Standard outline style (`BellRegular`)
+- **Filled**: Solid fill style (`BellFilled`)
+- **Light**: Thin outline style (`BellLight`)
+- **Duotone**: Two-tone style with opacity (`BellDuotone`)
+- **DuotoneLine**: Duotone with line details (`BellDuotoneLine`)
 
-Example naming convention:
-
-- `SvgBellRegular`
-- `SvgBellFilled`
-- `SvgBellLight`
-- `SvgBellDuotone`
-- `SvgBellDuotoneLine`
-
-## Props
+## Customization
 
 All icons accept standard SVG props:
 
 ```jsx
-<SvgBellFilled
+<BellFilled
   width={24} // Custom width
   height={24} // Custom height
   fill='red' // Custom color
@@ -109,13 +129,13 @@ The library includes a comprehensive set of icons including:
 - **Technology**: wifi, bluetooth, gear, code
 - **And many more...**
 
-## Bundle Size Optimization
+## Tree-Shaking
 
 This library is built with modern bundling tools and supports tree-shaking out of the box:
 
 ```jsx
-// ✅ Tree-shakeable - only includes SvgBellFilled
-import { SvgBellFilled } from "@harounabidi/zappicon"
+// ✅ Tree-shakeable - only includes BellFilled
+import { BellFilled } from "@harounabidi/zappicon"
 
 // ✅ Also tree-shakeable with modern bundlers
 import { SvgBellFilled, SvgSearchRegular } from "@harounabidi/zappicon"
