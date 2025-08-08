@@ -55,7 +55,7 @@ jobs:
 
       - name: Run linting
         if: steps.version_check.outputs.changed == 'true'
-        run: npm lint
+        run: npm run lint
 
       - name: Publish to npm
         if: steps.version_check.outputs.changed == 'true'
