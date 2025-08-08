@@ -1,9 +1,16 @@
-## <small>1.1.4 (2025-08-04)</small>
-
-* fix: improve package compatibility ([1467a94](https://github.com/harounabidi/zappicon-react/commit/1467a94))
-* docs: add semantic release note in README ([d52739b](https://github.com/harounabidi/zappicon-react/commit/d52739b))
-
 # Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [v1.1.10] - 2025-08-08
+
+### Changes
+
+fix: v1.1.10 permissions  
+
 
 ## [1.1.2](https://github.com/harounabidi/zappicon-react/compare/v1.1.1...v1.1.2) (2025-01-01)
 
