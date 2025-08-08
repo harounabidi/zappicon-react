@@ -38,6 +38,8 @@ jobs:
           else
             echo "changed=false" >> $GITHUB_OUTPUT
           fi
+      - name: Remove node_modules and package-lock.json
+        run: rm -rf node_modules package-lock.json
 
       - name: Install dependencies
         if: steps.version_check.outputs.changed == 'true'
