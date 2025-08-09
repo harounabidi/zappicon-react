@@ -6,21 +6,21 @@ import "@testing-library/jest-dom"
 describe("Icon Components", () => {
   describe("Basic Rendering", () => {
     it("renders AddressCardDuotone without crashing", async () => {
-      const { AddressCardDuotone } = await import("../src/index")
+      const { AddressCardDuotone } = await import("../src/icons/index")
       render(<AddressCardDuotone data-testid='address-card-icon' />)
       const icon = screen.getByTestId("address-card-icon")
       expect(icon).toBeInTheDocument()
     })
 
     it("renders AlarmClockFilled without crashing", async () => {
-      const { AlarmClockFilled } = await import("../src/index")
+      const { AlarmClockFilled } = await import("../src/icons/index")
       render(<AlarmClockFilled data-testid='alarm-clock-icon' />)
       const icon = screen.getByTestId("alarm-clock-icon")
       expect(icon).toBeInTheDocument()
     })
 
     it("renders BellRegular without crashing", async () => {
-      const { BellRegular } = await import("../src/index")
+      const { BellRegular } = await import("../src/icons/index")
       render(<BellRegular data-testid='bell-icon' />)
       const icon = screen.getByTestId("bell-icon")
       expect(icon).toBeInTheDocument()
@@ -29,14 +29,14 @@ describe("Icon Components", () => {
 
   describe("SVG Properties", () => {
     it("renders as an SVG element", async () => {
-      const { AddressCardDuotone } = await import("../src/index")
+      const { AddressCardDuotone } = await import("../src/icons/index")
       render(<AddressCardDuotone data-testid='svg-icon' />)
       const icon = screen.getByTestId("svg-icon")
       expect(icon.tagName).toBe("svg")
     })
 
     it("has default SVG attributes except width/height", async () => {
-      const { AddressCardDuotone } = await import("../src/index")
+      const { AddressCardDuotone } = await import("../src/icons/index")
       render(<AddressCardDuotone data-testid='svg-icon' />)
       const icon = screen.getByTestId("svg-icon")
 
@@ -47,7 +47,7 @@ describe("Icon Components", () => {
     })
 
     it("defaults fill to currentColor on first path", async () => {
-      const { AddressCardDuotone } = await import("../src/index")
+      const { AddressCardDuotone } = await import("../src/icons/index")
       render(<AddressCardDuotone data-testid='fill-icon' />)
       const icon = screen.getByTestId("fill-icon")
       const path = icon.querySelector("path")
@@ -57,7 +57,7 @@ describe("Icon Components", () => {
 
   describe("Props Handling", () => {
     it("accepts and applies custom width and height", async () => {
-      const { AddressCardDuotone } = await import("../src/index")
+      const { AddressCardDuotone } = await import("../src/icons/index")
       render(
         <AddressCardDuotone
           data-testid='custom-size-icon'
@@ -70,13 +70,13 @@ describe("Icon Components", () => {
       expect(icon).toHaveAttribute("height", "32")
     })
 
-    // it.skip("applies size prop to width and height (not supported by script)", () => {
-    //   // This test is skipped because the script does not support the size prop.
-    //   expect(true).toBe(true)
-    // })
+    it.skip("applies size prop to width and height (not supported by script)", () => {
+      // This test is skipped because the script does not support the size prop.
+      expect(true).toBe(true)
+    })
 
     it("accepts and applies custom className", async () => {
-      const { AddressCardDuotone } = await import("../src/index")
+      const { AddressCardDuotone } = await import("../src/icons/index")
       render(
         <AddressCardDuotone
           data-testid='custom-class-icon'
@@ -89,7 +89,7 @@ describe("Icon Components", () => {
     })
 
     it("accepts and applies custom fill color to first path", async () => {
-      const { AddressCardDuotone } = await import("../src/index")
+      const { AddressCardDuotone } = await import("../src/icons/index")
       render(<AddressCardDuotone data-testid='custom-fill-icon' fill='red' />)
       const icon = screen.getByTestId("custom-fill-icon")
       const path = icon.querySelector("path")
@@ -97,7 +97,7 @@ describe("Icon Components", () => {
     })
 
     it("accepts and applies style prop", async () => {
-      const { AddressCardDuotone } = await import("../src/index")
+      const { AddressCardDuotone } = await import("../src/icons/index")
       const customStyle = { color: "blue", fontSize: "2rem" }
       render(
         <AddressCardDuotone data-testid='styled-icon' style={customStyle} />
@@ -111,7 +111,7 @@ describe("Icon Components", () => {
 
   describe("Event Handlers", () => {
     it("handles onClick events", async () => {
-      const { AddressCardDuotone } = await import("../src/index")
+      const { AddressCardDuotone } = await import("../src/icons/index")
       const handleClick = jest.fn()
       render(
         <AddressCardDuotone
@@ -126,7 +126,7 @@ describe("Icon Components", () => {
     })
 
     it("handles onMouseEnter events", async () => {
-      const { AddressCardDuotone } = await import("../src/index")
+      const { AddressCardDuotone } = await import("../src/icons/index")
       const handleMouseEnter = jest.fn()
       render(
         <AddressCardDuotone
@@ -143,7 +143,7 @@ describe("Icon Components", () => {
 
   describe("Ref Handling", () => {
     it("forwards ref to the SVG element", async () => {
-      const { AddressCardDuotone } = await import("../src/index")
+      const { AddressCardDuotone } = await import("../src/icons/index")
       const ref = React.createRef<SVGSVGElement>()
       render(<AddressCardDuotone data-testid='ref-icon' ref={ref} />)
 
@@ -153,7 +153,7 @@ describe("Icon Components", () => {
     })
 
     it("allows access to SVG methods through ref", async () => {
-      const { AddressCardDuotone } = await import("../src/index")
+      const { AddressCardDuotone } = await import("../src/icons/index")
       const ref = React.createRef<SVGSVGElement>()
       render(<AddressCardDuotone data-testid='ref-icon' ref={ref} />)
 
@@ -165,7 +165,7 @@ describe("Icon Components", () => {
     })
 
     it("works with useRef hook", async () => {
-      const { AddressCardDuotone } = await import("../src/index")
+      const { AddressCardDuotone } = await import("../src/icons/index")
 
       const TestComponent = () => {
         const ref = React.useRef<SVGSVGElement>(null)
@@ -185,7 +185,7 @@ describe("Icon Components", () => {
     })
 
     it("works with callback refs", async () => {
-      const { AddressCardDuotone } = await import("../src/index")
+      const { AddressCardDuotone } = await import("../src/icons/index")
       let refElement: SVGSVGElement | null = null
 
       const callbackRef = (element: SVGSVGElement | null) => {
@@ -207,7 +207,7 @@ describe("Icon Components", () => {
 
   describe("Accessibility", () => {
     it("supports aria-label for screen readers", async () => {
-      const { AddressCardDuotone } = await import("../src/index")
+      const { AddressCardDuotone } = await import("../src/icons/index")
       render(
         <AddressCardDuotone
           data-testid='accessible-icon'
@@ -220,7 +220,7 @@ describe("Icon Components", () => {
     })
 
     it("supports role attribute", async () => {
-      const { AddressCardDuotone } = await import("../src/index")
+      const { AddressCardDuotone } = await import("../src/icons/index")
       render(<AddressCardDuotone data-testid='role-icon' role='img' />)
       const icon = screen.getByTestId("role-icon")
 
@@ -228,7 +228,7 @@ describe("Icon Components", () => {
     })
 
     it("can be made focusable with tabIndex", async () => {
-      const { AddressCardDuotone } = await import("../src/index")
+      const { AddressCardDuotone } = await import("../src/icons/index")
       render(<AddressCardDuotone data-testid='focusable-icon' tabIndex={0} />)
       const icon = screen.getByTestId("focusable-icon")
 

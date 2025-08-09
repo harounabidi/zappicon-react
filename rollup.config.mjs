@@ -16,7 +16,7 @@ const iconFiles = glob.sync("src/icons/*.tsx").reduce((acc, file) => {
 export default [
   // Bundle for main index with tree-shaking support
   {
-    input: "src/index.ts",
+    input: "src/icons/index.ts",
     output: [
       {
         file: "dist/cjs/index.js",
@@ -48,7 +48,7 @@ export default [
   // Individual icon files for optimal tree-shaking
   {
     input: {
-      index: "src/index.ts",
+      index: "src/icons/index.ts",
       ...iconFiles,
     },
     output: [
@@ -84,7 +84,7 @@ export default [
   },
   // Type definitions
   {
-    input: "src/index.ts",
+    input: "src/icons/index.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
     external: ["react", "react/jsx-runtime"],

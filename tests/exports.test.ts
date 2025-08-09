@@ -1,4 +1,4 @@
-import * as IconLibrary from "../src/index"
+import * as IconLibrary from "../src/icons/index"
 
 describe("Package Exports", () => {
   it("exports all icon components", () => {
