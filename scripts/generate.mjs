@@ -1,7 +1,8 @@
 import { readdir, readFile, writeFile, mkdir } from "fs/promises"
 import { join } from "path"
-import svgson from "svgson"
+import { parse } from "svgson"
 import process from "process"
+import { optimize } from "svgo"
 
 const sourceDir = "icons"
 const outputDir = "src/icons"
@@ -21,7 +22,10 @@ async function convertSvgToTs() {
       const tsPath = join(outputDir, file.replace(".svg", ".tsx"))
 
       const svgContent = await readFile(svgPath, "utf8")
-      const jsonObj = await svgson.parse(svgContent, { camelcase: true })
+
+      const optimizedSvg = optimize(svgContent).data
+
+      const jsonObj = await parse(optimizedSvg, { camelcase: true })
 
       // Generate React component using React.createElement
       const componentName = toPascalCase(file.replace(".svg", ""))
