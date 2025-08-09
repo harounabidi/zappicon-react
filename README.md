@@ -166,7 +166,6 @@ const MyIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 
 Built with:
 
-- **SVGR**: SVG to React component conversion
 - **Rollup**: Modern bundling with tree-shaking
 - **TypeScript**: Type safety and definitions
 - **Dual output**: Both CJS and ESM builds

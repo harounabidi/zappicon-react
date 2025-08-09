@@ -1,6 +1,6 @@
 import React from "react"
 import type { SVGProps } from "react"
-import AddressCardDuotone from "../src/icons/AddressCardDuotone"
+import { AddressCardDuotone } from "../src/index"
 
 describe("TypeScript Types", () => {
   it("icon components accept SVGProps", () => {

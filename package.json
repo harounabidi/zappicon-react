@@ -1,6 +1,6 @@
 {
   "name": "@harounabidi/zappicon",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
@@ -44,9 +44,8 @@
   "scripts": {
     "prepare": "husky",
     "clean": "rm -rf dist && rm -rf src/icons",
-    "generate": "node scripts/generate.mjs",
-    "svgr": "svgr --out-dir src/icons icons/*.svg && npm run generate",
-    "build": "npm run clean && npm run svgr && rollup -c",
+    "generate": "npm run clean && node scripts/generate.mjs",
+    "build": "npm run clean && npm run generate && rollup -c",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
@@ -64,7 +63,6 @@
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.4",
-    "@svgr/cli": "^8.1.0",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.6.4",
     "@testing-library/react": "^16.3.0",
@@ -83,7 +81,10 @@
     "rollup": "^4.46.2",
     "rollup-plugin-dts": "^6.2.1",
     "rollup-plugin-filesize": "^10.0.0",
+    "svgo": "^4.0.0",
+    "svgson": "^5.3.1",
     "ts-jest": "^29.1.1",
+    "tslib": "^2.8.1",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.38.1-alpha.4"
   }
