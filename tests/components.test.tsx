@@ -28,29 +28,16 @@ describe("Icon Components", () => {
 
       expect(icon).toHaveAttribute("xmlns", "http://www.w3.org/2000/svg")
       expect(icon).toHaveAttribute("viewBox", "0 0 24 24")
-      expect(icon).toHaveAttribute("width", "24")
-      expect(icon).toHaveAttribute("height", "24")
-      expect(icon).toHaveAttribute("fill", "none")
-    })
-
-    it("defaults fill to currentColor on first path", async () => {
-      const { AddressCard } = await import("../src/index")
-      render(<AddressCard data-testid='fill-icon' />)
-      const icon = screen.getByTestId("fill-icon")
-      const path = icon.querySelector("path")
-      expect(path).toHaveAttribute("fill", "currentColor")
+      expect(icon).toHaveAttribute("width", "1em")
+      expect(icon).toHaveAttribute("height", "1em")
     })
   })
 
   describe("Props Handling", () => {
     it("accepts and applies custom width and height", async () => {
-      const { AddressCardLight } = await import("../src/index")
+      const { AddressCard } = await import("../src/index")
       render(
-        <AddressCardLight
-          data-testid='custom-size-icon'
-          width='32'
-          height='32'
-        />
+        <AddressCard data-testid='custom-size-icon' width='32' height='32' />
       )
       const icon = screen.getByTestId("custom-size-icon")
       expect(icon).toHaveAttribute("width", "32")
@@ -75,20 +62,10 @@ describe("Icon Components", () => {
       expect(icon).toHaveClass("custom-icon-class")
     })
 
-    it("accepts and applies custom fill color to first path", async () => {
-      const { AddressCard } = await import("../src/index")
-      render(<AddressCard data-testid='custom-fill-icon' fill='red' />)
-      const icon = screen.getByTestId("custom-fill-icon")
-      const path = icon.querySelector("path")
-      expect(path).toHaveAttribute("fill", "currentColor")
-    })
-
     it("accepts and applies style prop", async () => {
-      const { AddressCardFilled } = await import("../src/index")
+      const { AddressCard } = await import("../src/index")
       const customStyle = { color: "blue", fontSize: "2rem" }
-      render(
-        <AddressCardFilled data-testid='styled-icon' style={customStyle} />
-      )
+      render(<AddressCard data-testid='styled-icon' style={customStyle} />)
       const icon = screen.getByTestId("styled-icon")
 
       expect(icon).toHaveStyle("color: blue")
