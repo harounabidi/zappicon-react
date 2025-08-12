@@ -6,7 +6,7 @@ import "@testing-library/jest-dom"
 describe("Icon Components", () => {
   describe("Basic Rendering", () => {
     it("renders AddressCard without crashing", async () => {
-      const { AddressCard } = await import("../src/icons/index")
+      const { AddressCard } = await import("../src/index")
       render(<AddressCard data-testid='address-card-icon' />)
       const icon = screen.getByTestId("address-card-icon")
       expect(icon).toBeInTheDocument()
@@ -15,14 +15,14 @@ describe("Icon Components", () => {
 
   describe("SVG Properties", () => {
     it("renders as an SVG element", async () => {
-      const { AddressCard } = await import("../src/icons/index")
+      const { AddressCard } = await import("../src/index")
       render(<AddressCard data-testid='svg-icon' />)
       const icon = screen.getByTestId("svg-icon")
       expect(icon.tagName).toBe("svg")
     })
 
     it("has default SVG attributes except width/height", async () => {
-      const { AddressCard } = await import("../src/icons/index")
+      const { AddressCard } = await import("../src/index")
       render(<AddressCard data-testid='svg-icon' />)
       const icon = screen.getByTestId("svg-icon")
 
@@ -34,7 +34,7 @@ describe("Icon Components", () => {
     })
 
     it("defaults fill to currentColor on first path", async () => {
-      const { AddressCard } = await import("../src/icons/index")
+      const { AddressCard } = await import("../src/index")
       render(<AddressCard data-testid='fill-icon' />)
       const icon = screen.getByTestId("fill-icon")
       const path = icon.querySelector("path")
@@ -44,9 +44,13 @@ describe("Icon Components", () => {
 
   describe("Props Handling", () => {
     it("accepts and applies custom width and height", async () => {
-      const { AddressCard } = await import("../src/icons/index")
+      const { AddressCardLight } = await import("../src/index")
       render(
-        <AddressCard data-testid='custom-size-icon' width='32' height='32' />
+        <AddressCardLight
+          data-testid='custom-size-icon'
+          width='32'
+          height='32'
+        />
       )
       const icon = screen.getByTestId("custom-size-icon")
       expect(icon).toHaveAttribute("width", "32")
@@ -59,7 +63,7 @@ describe("Icon Components", () => {
     // })
 
     it("accepts and applies custom className", async () => {
-      const { AddressCard } = await import("../src/icons/index")
+      const { AddressCard } = await import("../src/index")
       render(
         <AddressCard
           data-testid='custom-class-icon'
@@ -72,7 +76,7 @@ describe("Icon Components", () => {
     })
 
     it("accepts and applies custom fill color to first path", async () => {
-      const { AddressCard } = await import("../src/icons/index")
+      const { AddressCard } = await import("../src/index")
       render(<AddressCard data-testid='custom-fill-icon' fill='red' />)
       const icon = screen.getByTestId("custom-fill-icon")
       const path = icon.querySelector("path")
@@ -80,9 +84,11 @@ describe("Icon Components", () => {
     })
 
     it("accepts and applies style prop", async () => {
-      const { AddressCard } = await import("../src/icons/index")
+      const { AddressCardFilled } = await import("../src/index")
       const customStyle = { color: "blue", fontSize: "2rem" }
-      render(<AddressCard data-testid='styled-icon' style={customStyle} />)
+      render(
+        <AddressCardFilled data-testid='styled-icon' style={customStyle} />
+      )
       const icon = screen.getByTestId("styled-icon")
 
       expect(icon).toHaveStyle("color: blue")
@@ -92,7 +98,7 @@ describe("Icon Components", () => {
 
   describe("Event Handlers", () => {
     it("handles onClick events", async () => {
-      const { AddressCard } = await import("../src/icons/index")
+      const { AddressCard } = await import("../src/index")
       const handleClick = jest.fn()
       render(<AddressCard data-testid='clickable-icon' onClick={handleClick} />)
       const icon = screen.getByTestId("clickable-icon")
@@ -102,7 +108,7 @@ describe("Icon Components", () => {
     })
 
     it("handles onMouseEnter events", async () => {
-      const { AddressCard } = await import("../src/icons/index")
+      const { AddressCard } = await import("../src/index")
       const handleMouseEnter = jest.fn()
       render(
         <AddressCard
@@ -119,7 +125,7 @@ describe("Icon Components", () => {
 
   describe("Ref Handling", () => {
     it("forwards ref to the SVG element", async () => {
-      const { AddressCard } = await import("../src/icons/index")
+      const { AddressCard } = await import("../src/index")
       const ref = React.createRef<SVGSVGElement>()
       render(<AddressCard data-testid='ref-icon' ref={ref} />)
 
@@ -129,7 +135,7 @@ describe("Icon Components", () => {
     })
 
     it("allows access to SVG methods through ref", async () => {
-      const { AddressCard } = await import("../src/icons/index")
+      const { AddressCard } = await import("../src/index")
       const ref = React.createRef<SVGSVGElement>()
       render(<AddressCard data-testid='ref-icon' ref={ref} />)
 
@@ -141,7 +147,7 @@ describe("Icon Components", () => {
     })
 
     it("works with useRef hook", async () => {
-      const { AddressCard } = await import("../src/icons/index")
+      const { AddressCard } = await import("../src/index")
 
       const TestComponent = () => {
         const ref = React.useRef<SVGSVGElement>(null)
@@ -161,7 +167,7 @@ describe("Icon Components", () => {
     })
 
     it("works with callback refs", async () => {
-      const { AddressCard } = await import("../src/icons/index")
+      const { AddressCard } = await import("../src/index")
       let refElement: SVGSVGElement | null = null
 
       const callbackRef = (element: SVGSVGElement | null) => {
@@ -181,7 +187,7 @@ describe("Icon Components", () => {
 
   describe("Accessibility", () => {
     it("supports aria-label for screen readers", async () => {
-      const { AddressCard } = await import("../src/icons/index")
+      const { AddressCard } = await import("../src/index")
       render(
         <AddressCard
           data-testid='accessible-icon'
@@ -194,7 +200,7 @@ describe("Icon Components", () => {
     })
 
     it("supports role attribute", async () => {
-      const { AddressCard } = await import("../src/icons/index")
+      const { AddressCard } = await import("../src/index")
       render(<AddressCard data-testid='role-icon' role='img' />)
       const icon = screen.getByTestId("role-icon")
 
@@ -202,7 +208,7 @@ describe("Icon Components", () => {
     })
 
     it("can be made focusable with tabIndex", async () => {
-      const { AddressCard } = await import("../src/icons/index")
+      const { AddressCard } = await import("../src/index")
       render(<AddressCard data-testid='focusable-icon' tabIndex={0} />)
       const icon = screen.getByTestId("focusable-icon")
 
@@ -210,30 +216,30 @@ describe("Icon Components", () => {
     })
   })
 
-  describe("Variant custom prop", () => {
-    // light, regular, filled, duotone, duotone-line
-    it("renders different content for each variant", async () => {
-      const { AddressCard } = await import("../src/icons/index")
+  // describe("Variant custom prop", () => {
+  //   // light, regular, filled, duotone, duotone-line
+  //   it("renders different content for each variant", async () => {
+  //     const { AddressCard } = await import("../src/index")
 
-      const variants = ["light", "regular", "filled", "duotone", "duotone-line"]
-      render(
-        <>
-          {variants.map((variant) => (
-            <AddressCard
-              key={variant}
-              data-testid={`variant-icon-${variant}`}
-              variant={variant as import("../src/icons/types").IconVariant}
-            />
-          ))}
-        </>
-      )
+  //     const variants = ["light", "regular", "filled", "duotone", "duotone-line"]
+  //     render(
+  //       <>
+  //         {variants.map((variant) => (
+  //           <AddressCard
+  //             key={variant}
+  //             data-testid={`variant-icon-${variant}`}
+  //             variant={variant as import("../src/icons/types").IconVariant}
+  //           />
+  //         ))}
+  //       </>
+  //     )
 
-      // Verify that each variant renders (they should have different content)
-      for (const variant of variants) {
-        const icon = screen.getByTestId(`variant-icon-${variant}`)
-        expect(icon).toBeInTheDocument()
-        expect(icon.tagName).toBe("svg")
-      }
-    })
-  })
+  //     // Verify that each variant renders (they should have different content)
+  //     for (const variant of variants) {
+  //       const icon = screen.getByTestId(`variant-icon-${variant}`)
+  //       expect(icon).toBeInTheDocument()
+  //       expect(icon.tagName).toBe("svg")
+  //     }
+  //   })
+  // })
 })

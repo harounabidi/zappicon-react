@@ -1,4 +1,4 @@
-import * as IconLibrary from "../src/icons/index"
+import * as IconLibrary from "../src/index"
 
 describe("Package Exports", () => {
   it("exports all icon components", () => {
@@ -19,10 +19,10 @@ describe("Package Exports", () => {
     expect(IconLibrary.AlarmClock.$$typeof).toBeDefined()
   })
 
-  it("exports Bell component", () => {
-    expect(IconLibrary.Bell).toBeDefined()
-    expect(typeof IconLibrary.Bell).toBe("object")
-    expect(IconLibrary.Bell.$$typeof).toBeDefined()
+  it("exports BellSlash component", () => {
+    expect(IconLibrary.BellSlash).toBeDefined()
+    expect(typeof IconLibrary.BellSlash).toBe("object")
+    expect(IconLibrary.BellSlash.$$typeof).toBeDefined()
   })
 
   it("all exports are React components (forwardRef objects)", () => {
